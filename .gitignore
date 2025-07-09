@@ -1,0 +1,519 @@
+# =============================================================================
+# AuraClass Project .gitignore
+# 适用于 Python FastAPI + Vue.js + MySQL 全栈项目
+# =============================================================================
+
+# =============================================================================
+# Python / FastAPI Backend
+# =============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+.coverage
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# =============================================================================
+# Node.js / Vue.js Frontend
+# =============================================================================
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript v1 declaration files
+typings/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# vue-press build output
+.vuepress/dist
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Vite
+dist/
+*.local
+
+# =============================================================================
+# Database
+# =============================================================================
+
+# SQLite
+*.sqlite
+*.sqlite3
+*.db
+*.db3
+
+# MySQL
+*.sql
+*.dump
+
+# PostgreSQL
+*.pgsql
+
+# Database dumps
+*.backup
+*.bak
+
+# =============================================================================
+# Logs and temporary files
+# =============================================================================
+
+# Log files
+logs/
+*.log
+log/
+*.log.*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# =============================================================================
+# File uploads and user content
+# =============================================================================
+
+# Uploads directory
+uploads/
+upload/
+media/
+static/uploads/
+
+# User generated content
+user-content/
+attachments/
+
+# =============================================================================
+# IDE and Editor files
+# =============================================================================
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Atom
+.ftpconfig
+.sftpconfig
+
+# =============================================================================
+# Operating System files
+# =============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+
+# Linux
+*~
+
+# =============================================================================
+# Docker
+# =============================================================================
+
+# Docker
+docker-compose.override.yml
+
+# =============================================================================
+# SSL Certificates
+# =============================================================================
+
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+
+# =============================================================================
+# Backup files
+# =============================================================================
+
+backup/
+backups/
+*.backup
+*.bak
+*.old
+
+# =============================================================================
+# Configuration files (sensitive)
+# =============================================================================
+
+# Configuration files with sensitive data
+config.local.json
+config.production.json
+secrets.json
+
+# =============================================================================
+# Monitoring and Analytics
+# =============================================================================
+
+# Prometheus data
+prometheus_data/
+
+# Grafana data
+grafana_data/
+
+# =============================================================================
+# AI Model files
+# =============================================================================
+
+# Large model files
+*.model
+*.bin
+*.safetensors
+models/
+ollama_models/
+
+# =============================================================================
+# Cache directories
+# =============================================================================
+
+# Redis dump
+dump.rdb
+
+# Cache
+.cache/
+cache/
+
+# =============================================================================
+# Documentation build
+# =============================================================================
+
+# Sphinx build
+docs/_build/
+docs/build/
+
+# =============================================================================
+# Testing
+# =============================================================================
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+test-results/
+coverage-reports/
+
+# =============================================================================
+# Package managers
+# =============================================================================
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# pnpm
+.pnpm-debug.log*
+
+# =============================================================================
+# Compiled output
+# =============================================================================
+
+# Build outputs
+build/
+dist/
+out/
+
+# =============================================================================
+# Runtime and PID files
+# =============================================================================
+
+*.pid
+*.seed
+*.pid.lock
+
+# =============================================================================
+# Project specific
+# =============================================================================
+
+# Alembic versions (if needed to be excluded)
+# alembic/versions/
+
+# Static files (if auto-generated)
+# static/
+
+# Locale files (if auto-generated)
+# locale/
+
+# Documentation (if auto-generated)
+# docs/api/
+
+# =============================================================================
+# Temporary project files
+# =============================================================================
+
+# Development notes
+dev-notes.md
+todo.md
+scratch.py
+test.py
+debug.py
+
+# Temporary scripts
+temp_*.py
+temp_*.js
+temp_*.vue
+
+# Old versions
+*.old
+*_old
+*_backup
+
+# =============================================================================
+# Archive files
+# =============================================================================
+
+*.zip
+*.tar.gz
+*.tar
+*.rar
+*.7z 

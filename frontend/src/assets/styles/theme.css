@@ -1,0 +1,89 @@
+:root {
+  --primary-color: #3366FF;
+  --success-color: #52C41A;
+  --warning-color: #FAAD14;
+  --error-color: #F5222D;
+  --base-font-size: 16px;
+  
+  /* Light theme */
+  --bg-color: #f5f5f5;
+  --component-bg: #ffffff;
+  --text-color: #333333;
+  --text-color-secondary: #8c8c8c;
+  --border-color: #e8e8e8;
+  --disabled-color: #d9d9d9;
+  --disabled-bg: #f5f5f5;
+  
+  font-size: var(--base-font-size);
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --component-bg: #1f1f1f;
+  --text-color: #ffffff;
+  --text-color-secondary: #b3b3b3;
+  --border-color: #434343;
+  --disabled-color: #6c6c6c;
+  --disabled-bg: #2c2c2c;
+}
+
+/* 动画全局设置 */
+.disable-animations * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* 紧凑模式全局设置 */
+.compact-mode .n-card {
+  padding: 12px !important;
+}
+
+.compact-mode .n-form-item {
+  margin-bottom: 12px !important;
+}
+
+.compact-mode .n-layout-header {
+  padding: 8px 16px !important;
+}
+
+.compact-mode .n-menu-item {
+  padding: 8px 12px !important;
+}
+
+/* 全局过渡动画 */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
