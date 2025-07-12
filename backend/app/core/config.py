@@ -87,6 +87,22 @@ class Settings(BaseSettings):
             
         return ','.join(origins)
     
+    # CORS配置 - 支持 .env 里的 BACKEND_CORS_ORIGINS
+    BACKEND_CORS_ORIGINS: str = ""
+
+    @field_validator("BACKEND_CORS_ORIGINS")
+    def validate_backend_cors_origins(cls, v: str) -> str:
+        if not v:
+            return ""
+        origins = [origin.strip() for origin in v.split(",") if origin.strip()]
+        return ",".join(origins)
+
+    @property
+    def get_backend_cors_origins(self) -> List[str]:
+        if not self.BACKEND_CORS_ORIGINS:
+            return []
+        return [origin.strip() for origin in self.BACKEND_CORS_ORIGINS.split(",") if origin.strip()]
+    
     # 日志配置
     LOG_LEVEL: str = "INFO"
     LOG_FILE: str = "logs/app.log"

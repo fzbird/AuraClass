@@ -222,7 +222,7 @@ if [ ! -f "backend/.env" ]; then
     else
         cat > backend/.env << EOF
 # 数据库配置
-DATABASE_URL=mysql+pymysql://root:password@192.168.1.45:3306/auraclass_db?charset=utf8mb4
+DATABASE_URL=mysql+aiomysql://root:password@192.168.1.45:3306/auraclass_db?charset=utf8mb4
 
 # 安全密钥
 SECRET_KEY=your-secret-key-here
@@ -279,7 +279,7 @@ if [ "$env_choice" = "2" ] || [ "$env_choice" = "3" ]; then
 fi
 
 # 更新数据库配置（使用192.168.1.45的MySQL服务器）
-DATABASE_URL="mysql+pymysql://root:password@192.168.1.45:3306/auraclass_db?charset=utf8mb4"
+DATABASE_URL="mysql+aiomysql://root:password@192.168.1.45:3306/auraclass_db?charset=utf8mb4"
 
 # 更新配置文件
 echo "🔧 更新配置项..."
