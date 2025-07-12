@@ -179,9 +179,6 @@ class Settings(BaseSettings):
     )
 
 
-# # 设置默认环境变量避免验证问题
-# os.environ.setdefault('SECRET_KEY', 'YOUR_DEFAULT_SECRET_KEY_HERE_CHANGE_IN_PRODUCTION')
-# os.environ.setdefault('DATABASE_URL', 'sqlite:///./test.db')
 
 # SettingsProxy类 - 创建一个代理对象，通过__getattr__动态转发所有属性访问到内部的settings实例
 class SettingsProxy:

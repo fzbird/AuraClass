@@ -273,13 +273,13 @@ if [ "$env_choice" = "1" ] || [ "$env_choice" = "3" ]; then
 fi
 
 if [ "$env_choice" = "2" ] || [ "$env_choice" = "3" ]; then
-    # 生产环境和灵活环境需要80端口
-    CORS_ORIGINS="$CORS_ORIGINS,http://$SERVER_IP"
-    echo "📍 已添加 http://$SERVER_IP 到CORS配置"
+    # 生产环境和灵活环境需要81端口
+    CORS_ORIGINS="$CORS_ORIGINS,http://$SERVER_IP:81"
+    echo "📍 已添加 http://$SERVER_IP:81 到CORS配置"
 fi
 
 # 更新数据库配置（使用192.168.1.45的MySQL服务器）
-DATABASE_URL="mysql+aiomysql://root:password@192.168.1.45:3306/auraclass_db?charset=utf8mb4"
+DATABASE_URL="mysql+aiomysql://root:qsdfz20150707@192.168.1.45:3306/auraclass_db?charset=utf8mb4"
 
 # 更新配置文件
 echo "🔧 更新配置项..."

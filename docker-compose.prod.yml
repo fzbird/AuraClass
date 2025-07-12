@@ -32,4 +32,4 @@ services:
 
 networks:
   auraclass-prod-network:
-    driver: bridge 
+    driver: bridge
