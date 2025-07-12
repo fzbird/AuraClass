@@ -1,0 +1,35 @@
+# AuraClass 开发环境配置 - 仅8201端口，避免端口冲突
+# 使用反向代理模式，前端通过nginx代理API请求
+
+services:
+  backend:
+    build: ./backend
+    container_name: auraclass_backend_dev
+    restart: always
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8200 --reload
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8200:8200"
+    env_file:
+      - ./backend/.env
+    networks:
+      - auraclass-dev-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: auraclass_frontend_dev
+    restart: always
+    ports:
+      # 开发环境仅使用8201端口
+      - "8201:80"
+    depends_on:
+      - backend
+    networks:
+      - auraclass-dev-network
+
+networks:
+  auraclass-dev-network:
+    driver: bridge 

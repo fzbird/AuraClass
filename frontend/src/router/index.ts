@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { h } from 'vue';
 import { useUserStore } from '@/stores/user';
 import { usePermissionStore } from '@/stores/permission';
 

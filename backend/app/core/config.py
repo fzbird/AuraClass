@@ -58,14 +58,14 @@ class Settings(BaseSettings):
     DB_ECHO: bool = False
     
     # CORS配置 - 使用字符串类型存储，避免Pydantic的JSON解析问题
-    ALLOWED_ORIGINS: str = "http://localhost:8201,ws://localhost:8201,http://localhost:8200,ws://localhost:8200"
+    ALLOWED_ORIGINS: str = "http://localhost:8200,ws://localhost:8200"
     
     # 添加验证器确保ALLOWED_ORIGINS格式正确
     @field_validator("ALLOWED_ORIGINS")
     def validate_allowed_origins(cls, v: str) -> str:
         # 清理ALLOWED_ORIGINS字符串
         if not v:
-            return "http://localhost:8201,ws://localhost:8201,http://localhost:8200,ws://localhost:8200"
+            return "http://localhost:8200,ws://localhost:8200"
                 
         # 分割并处理各个origin
         origins = []
@@ -83,7 +83,7 @@ class Settings(BaseSettings):
             origins.append(origin)
             
         if not origins:
-            return "http://localhost:8201,ws://localhost:8201,http://localhost:8200,ws://localhost:8200"
+            return "http://localhost:8200,ws://localhost:8200"
             
         return ','.join(origins)
     
@@ -98,7 +98,7 @@ class Settings(BaseSettings):
     SLOW_API_THRESHOLD: float = 1.0  # 慢API阈值（秒）
     
     # Redis配置
-    REDIS_URL: str = "redis://localhost:6379/0"
+    # REDIS_URL: str = "redis://localhost:6379/0"
     
     # 文件上传配置
     UPLOADS_DIR: str = "uploads"
@@ -119,20 +119,25 @@ class Settings(BaseSettings):
     
     # Ollama配置
     OLLAMA_BASE_URL: str = "http://192.168.5.117:11434"
-    OLLAMA_MODEL_NAME: str = "qwen3:32b"
+    OLLAMA_MODEL_NAME: str = "gemma3:27b"
     OLLAMA_API_KEY: str = "your-ollama-api-key-here"
     OLLAMA_USE_SYSTEM_PARAM: bool = True
     OLLAMA_USE_THINK_MODE: bool = True  # 开启思考模式
 
     # Open-Webui配置
     OPEN_WEBUI_BASE_URL: str = "http://192.168.5.117:3000"
-    OPEN_WEBUI_MODEL_NAME: str = "qwen3:32b"
+    OPEN_WEBUI_MODEL_NAME: str = "gemma3:27b"
     OPEN_WEBUI_API_KEY: str = "your-open-webui-api-key-here"
     OPEN_WEBUI_USE_THINK_MODE: bool = True  # 开启思考模式
 
     # OpenAI配置
     OPENAI_BASE_URL: str = "https://api.openai.com/v1"
     OPENAI_API_KEY: str = "your-openai-api-key-here"
+
+    # 启动端口
+    BACKEND_PORT: int = 8200
+    FRONTEND_PORT: int = 8210
+    
     # 项目根目录
     @property
     def BASE_DIR(self) -> Path:
@@ -142,7 +147,7 @@ class Settings(BaseSettings):
     @property
     def get_allowed_origins(self) -> List[str]:
         if not self.ALLOWED_ORIGINS:
-            return ["http://localhost:8201", "ws://localhost:8201", "http://localhost:8200", "ws://localhost:8200"]
+            return ["http://localhost:8200", "ws://localhost:8200"]
         return [origin.strip() for origin in self.ALLOWED_ORIGINS.split(",") if origin.strip()]
     
     # 配置模型，添加自定义预处理器

@@ -32,6 +32,9 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
+# Set the database URL from your application's settings
+config.set_main_option('sqlalchemy.url', settings.DATABASE_URL)
+
 # add your model's MetaData object here
 # for 'autogenerate' support
 target_metadata = Base.metadata
@@ -41,8 +44,9 @@ target_metadata = Base.metadata
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 
-def get_url():
-    return settings.DATABASE_URL
+
+# def get_url():
+#     return settings.DATABASE_URL
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.
@@ -56,7 +60,7 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = get_url()
+    url = config.get_main_option("sqlalchemy.url")
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -73,7 +77,6 @@ async def run_async_migrations() -> None:
 
     """
     configuration = config.get_section(config.config_ini_section)
-    configuration["sqlalchemy.url"] = get_url()
     connectable = async_engine_from_config(
         configuration,
         prefix="sqlalchemy.",

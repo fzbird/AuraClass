@@ -20,7 +20,7 @@ export default defineConfig({
               rewrites: [
                 { 
                   from: /^\/(assets|images|css|js)\/.*/, 
-                  to: (context) => context.parsedUrl.pathname 
+                  to: (context: any) => context.parsedUrl.pathname 
                 },
                 { from: /./, to: '/index.html' }
               ]

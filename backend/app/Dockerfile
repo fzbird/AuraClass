@@ -9,14 +9,16 @@ ENV PYTHONPATH=/app \
     TZ=Asia/Shanghai
 
 # 安装系统依赖
+# aiomysql 是纯 Python 实现，通常不需要系统级的-dev依赖包
+# 如果您使用如 mysqlclient 这样的库，则需要安装 default-libmysqlclient-dev
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
-    libpq-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # 安装Python依赖
 COPY pyproject.toml .
+# poetry install --no-root --no-dev
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -e .
 

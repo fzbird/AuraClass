@@ -1,0 +1,59 @@
+# frontend/nginx.conf
+
+server {
+    listen 80;
+    server_name localhost;
+
+    # 指定 web 根目录，即前端静态文件的存放位置
+    root /usr/share/nginx/html;
+    index index.html;
+
+    # 对所有 URI 进行处理，尝试查找相应的文件
+    # 如果找不到文件，则回退到 index.html
+    # 这对于单页应用 (SPA) 的路由至关重要
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # API 代理：将所有以 /api/ 开头的请求转发到后端服务
+    # 在 docker-compose 网络中，后端服务的主机名为 'auraclass_backendbackend'
+    # Proxy API requests to the backend
+    location /api {
+        proxy_pass http://auraclass_backend:8200;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        # CORS 支持
+        add_header Access-Control-Allow-Origin *;
+        add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS";
+        add_header Access-Control-Allow-Headers "Content-Type, Authorization";
+        
+        # 处理 OPTIONS 请求
+        if ($request_method = OPTIONS) {
+            return 204;
+        }
+    }
+
+    # WebSocket 代理：将所有以 /ws/ 开头的请求转发到后端
+    # 这对于实时通知和 AI 助手功能是必需的
+    location /ws/ {
+        proxy_pass http://auraclass_backend:$backend_port;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+    }
+
+    # 优化：为静态资源设置缓存头，减少不必要的请求
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+        expires 1y;
+        add_header Cache-Control "public, no-transform";
+    }
+
+    # 安全：禁止访问隐藏文件，如 .htaccess
+    location ~ /\. {
+        deny all;
+    }
+} 

@@ -114,8 +114,6 @@ import { createQuantRecord, updateQuantRecord } from '@/services/api/records';
 import type { QuantRecord, CreateQuantRecordPayload } from '@/types/record';
 import type { QuantItem } from '@/types/quant-item';
 import { useUserStore } from '@/stores/user';
-import { FileResponse } from 'fastapi';
-import { export_stats } from '@/services/export';
 
 // 定义组件属性
 const props = defineProps<{

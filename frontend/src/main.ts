@@ -11,7 +11,6 @@ import { loadWsConfigFromSettings, autoConfigureWebSocket } from './services/web
 import { useUserStore } from './stores/user'
 import { useWebSocketStore } from './stores/websocket'
 import naive from 'naive-ui'
-import { NButton, NInput, NSelect, NCard, NDataTable, NModal } from 'naive-ui'
 
 // 全局处理未捕获的Promise异常
 window.addEventListener('unhandledrejection', (event) => {

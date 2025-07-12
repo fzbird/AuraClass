@@ -1,0 +1,35 @@
+# AuraClass 生产环境配置 - 仅80端口，标准HTTP访问
+# 使用反向代理模式，前端通过nginx代理API请求
+
+services:
+  backend:
+    build: ./backend
+    container_name: auraclass_backend_prod
+    restart: always
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8200
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8200:8200"
+    env_file:
+      - ./backend/.env
+    networks:
+      - auraclass-prod-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: auraclass_frontend_prod
+    restart: always
+    ports:
+      # 生产环境仅使用标准HTTP 80端口
+      - "81:80"
+    depends_on:
+      - backend
+    networks:
+      - auraclass-prod-network
+
+networks:
+  auraclass-prod-network:
+    driver: bridge 
