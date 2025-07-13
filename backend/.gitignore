@@ -16,38 +16,141 @@ parts/
 sdist/
 var/
 wheels/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
-# Virtual Environment
+# FastAPI & Django
+.env
+.env.local
+.env.production
+.env.staging
+instance/
+.webassets-cache
+
+# Virtual environments
+.venv/
 venv/
-env/
 ENV/
+env/
 .env
 
+# Database
+*.db
+*.sqlite3
+*.sqlite
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+lerna-debug.log*
+
+# Vue.js
+/frontend/dist/
+/frontend/.temp/
+/frontend/.cache/
+/frontend/.nuxt/
+/frontend/.vite/
+
 # IDE
-.idea/
 .vscode/
+.idea/
 *.swp
 *.swo
+*~
+
+# JetBrains
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Upload files (保护用户上传的文件)
+/backend/uploads/*
+!/backend/uploads/.gitkeep
 
 # Logs
-logs/
 *.log
+logs/
+!/backend/logs/.gitkeep
+*.log.*
 
-# Local development
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Docker
+docker-compose.override.yml
+.dockerignore
 
-# Uploads
-uploads/
+# Environment variables
+.env*
+!.env.example
 
 # Coverage reports
 htmlcov/
+.tox/
 .coverage
 .coverage.*
+.cache
+nosetests.xml
 coverage.xml
-*.cover 
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Backup files
+*.bak
+*.orig
+*.tmp
+
+# Temporary folders
+tmp/
+temp/ 
+
+# 数据库
+/backend/backup/*
+!/backend/backup/.gitkeep
